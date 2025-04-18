@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="temperatureConverter" class="com.colvir.webinar2.impl.TemperatureConverterImpl"/>
+
+    <bean id="parametrizedConverter" class="com.colvir.webinar2.impl.ParametrizedConverterImpl">
+        <constructor-arg name="cls" value="111" />
+        <constructor-arg name="fhr" value="222" />
+    </bean>
+
+</beans>
