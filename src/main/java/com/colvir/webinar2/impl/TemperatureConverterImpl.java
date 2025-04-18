@@ -1,11 +1,12 @@
 package com.colvir.webinar2.impl;
 
-import com.colvir.webinar2.Converter;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.colvir.webinar2.TemperatureConverter;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-public class ConverterImpl implements Converter {
+@Component
+@Scope("prototype")
+public class TemperatureConverterImpl implements TemperatureConverter {
     @Override
     public double toCls(double fhr) {
         return (fhr - 32) * 5 / 9;

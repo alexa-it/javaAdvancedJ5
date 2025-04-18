@@ -1,13 +1,13 @@
 package com.colvir.webinar2;
 
-import com.colvir.webinar2.impl.ConverterImpl;
+import com.colvir.webinar2.impl.TemperatureConverterImpl;
 import com.colvir.webinar2.impl.ParametrizedConverterImpl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringContextXmlRunner {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
-        Converter converter = context.getBean("converter", ConverterImpl.class);
+        TemperatureConverter converter = context.getBean("temperatureConverter", TemperatureConverter.class);
         System.out.println("SpringContextXmlRunner, ConverterImpl");
         System.out.println(converter.toCls(100));
         System.out.println(converter.toFhr(100));

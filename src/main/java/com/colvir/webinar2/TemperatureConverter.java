@@ -1,6 +1,6 @@
 package com.colvir.webinar2;
 
-public interface Converter {
+public interface TemperatureConverter {
     double toCls(double fhr);
     double toFhr(double cls);
 }

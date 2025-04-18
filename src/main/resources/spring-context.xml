@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="converter" class="com.colvir.webinar2.impl.ConverterImpl"/>
+    <bean id="temperatureConverter" class="com.colvir.webinar2.impl.TemperatureConverterImpl"/>
 
     <bean id="parametrizedConverter" class="com.colvir.webinar2.impl.ParametrizedConverterImpl">
         <constructor-arg name="cls" value="111" />
