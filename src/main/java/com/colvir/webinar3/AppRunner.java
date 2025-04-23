@@ -16,22 +16,25 @@ public class AppRunner {
             Patient patient = new Patient();
             patient.setName("Anna Belova");
             patient.setDiagnosis("Sunstroke");
+            patient.setTreatmentStart(context.getBean(MedicalHistoryService.class).getTreatmentStart());
 
-            service.save(patient, context.getBean(MedicalHistoryService.class));
-            TimeUnit.SECONDS.sleep(5);
+            service.save(patient);
+            TimeUnit.SECONDS.sleep(1);
 
             Patient patient1 = new Patient();
             patient1.setName("Michael Snegirov");
             patient1.setDiagnosis("Allergy");
+            patient1.setTreatmentStart(context.getBean(MedicalHistoryService.class).getTreatmentStart());
 
-            service.save(patient1, context.getBean(MedicalHistoryService.class));
-            TimeUnit.SECONDS.sleep(5);
+            service.save(patient1);
+            TimeUnit.SECONDS.sleep(2);
 
             Patient patient2 = new Patient();
             patient2.setName("Elena Sidorova");
             patient2.setDiagnosis("Allergy");
+            patient2.setTreatmentStart(context.getBean(MedicalHistoryService.class).getTreatmentStart());
 
-            service.save(patient2, context.getBean(MedicalHistoryService.class));
+            service.save(patient2);
 
             System.out.println("Show patients");
             service.findAll().forEach(System.out::println);

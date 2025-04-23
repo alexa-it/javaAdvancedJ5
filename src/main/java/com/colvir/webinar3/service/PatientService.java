@@ -2,8 +2,10 @@ package com.colvir.webinar3.service;
 
 import com.colvir.webinar3.dao.PatientDao;
 import com.colvir.webinar3.model.Patient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +13,6 @@ import java.util.Map;
 import java.util.Random;
 
 @Service
-@Scope("singleton")
 public class PatientService {
 
     private final PatientDao patientDao;
@@ -19,24 +20,25 @@ public class PatientService {
 
     private MedicalHistoryService medicalHistoryService;
 
-    public PatientService(Map<String, PatientDao> patientDao, MedicalHistoryService medicalHistoryService
-    ) {
+    public MedicalHistoryService getMedicalHistoryService() {
+        return medicalHistoryService;
+    }
+
+    public PatientService(PatientDao patientDao, MedicalHistoryService medicalHistoryService) {
         System.out.println("PatientService constructor called");
-        this.patientDao = patientDao.values().stream().findFirst().orElse(null);
+        this.patientDao = patientDao;
         this.medicalHistoryService = medicalHistoryService;
     }
 
-    public void save(Patient patient, MedicalHistoryService medicalHistoryService) {
+    public void save(Patient patient) {
         if (patient.getId() == null) {
             patient.setId(RANDOM.nextLong());
         }
-        patient.setMedicalHistoryService(medicalHistoryService);
         patientDao.save(patient);
     }
 
     public List<Patient> findAll(){
         return patientDao.findAll();
     }
-
 
 }

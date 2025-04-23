@@ -1,28 +1,19 @@
 package com.colvir.webinar3.service;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.Calendar;
 
-@Component
-@Scope("prototype")
+@Service
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class MedicalHistoryService {
 
-    private final String treatmentStart;
+    private Date treatmentStart = Calendar.getInstance().getTime();
 
-    public MedicalHistoryService(){
-        this.treatmentStart = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    public String showTreatmentStart() {
-        return treatmentStart;
+    public Date getTreatmentStart() {
+        return this.treatmentStart;
     }
 }
