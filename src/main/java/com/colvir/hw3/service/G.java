@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
+import static org.springframework.context.annotation.ScopedProxyMode.TARGET_CLASS;
+
 @Service
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode=TARGET_CLASS)
 public class G {
 
     private Long id = new Random().nextLong();

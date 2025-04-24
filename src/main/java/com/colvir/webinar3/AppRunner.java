@@ -16,7 +16,7 @@ public class AppRunner {
             Patient patient = new Patient();
             patient.setName("Anna Belova");
             patient.setDiagnosis("Sunstroke");
-            patient.setTreatmentStart(context.getBean(MedicalHistoryService.class).getTreatmentStart());
+            patient.setTreatmentStart(service.getMedicalHistoryService().getTreatmentStart());
 
             service.save(patient);
             TimeUnit.SECONDS.sleep(1);
@@ -24,7 +24,7 @@ public class AppRunner {
             Patient patient1 = new Patient();
             patient1.setName("Michael Snegirov");
             patient1.setDiagnosis("Allergy");
-            patient1.setTreatmentStart(context.getBean(MedicalHistoryService.class).getTreatmentStart());
+            patient1.setTreatmentStart(service.getMedicalHistoryService().getTreatmentStart());
 
             service.save(patient1);
             TimeUnit.SECONDS.sleep(2);
@@ -32,7 +32,7 @@ public class AppRunner {
             Patient patient2 = new Patient();
             patient2.setName("Elena Sidorova");
             patient2.setDiagnosis("Allergy");
-            patient2.setTreatmentStart(context.getBean(MedicalHistoryService.class).getTreatmentStart());
+            patient2.setTreatmentStart(service.getMedicalHistoryService().getTreatmentStart());
 
             service.save(patient2);
 
