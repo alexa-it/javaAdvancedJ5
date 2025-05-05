@@ -11,7 +11,7 @@ import java.io.IOException;
 public class SpringBootRunner {
     public static void main(String[] args) {
         try (ConfigurableApplicationContext applicationContext = SpringApplication.run(SpringBootRunner.class, args)) {
-            applicationContext.getBean(ArchiverService.class).archiveFile("d:\\javaAdvancedJ5\\src\\main\\resources\\");
+            applicationContext.getBean(ArchiverService.class).archiveFile("compression/", "test1.txt", "compressed1.zip");
         } catch (IOException e) {
             System.out.println("Exception:" + e.getMessage());
         }

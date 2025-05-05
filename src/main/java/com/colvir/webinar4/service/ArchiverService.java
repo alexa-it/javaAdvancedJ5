@@ -8,26 +8,27 @@ import java.util.zip.ZipOutputStream;
 
 @Service
 public class ArchiverService {
-    public void archiveFile(String path) throws IOException {
-        System.out.println("Path to search file:" + path);
+    public void archiveFile(String contextPath, String inputName, String compressedName) throws IOException {
+        String sourceFile = contextPath + inputName;
+        System.out.println("Search file:" + sourceFile);
+        try (FileOutputStream fos = new FileOutputStream(contextPath + compressedName)) {
+            ZipOutputStream zipOut = new ZipOutputStream(fos);
 
-        String sourceFile = path+ "test1.txt";
-        FileOutputStream fos = new FileOutputStream(path + "compressed.zip");
-        ZipOutputStream zipOut = new ZipOutputStream(fos);
+            File fileToZip = new File(sourceFile);
 
-        File fileToZip = new File(sourceFile);
-        FileInputStream fis = new FileInputStream(fileToZip);
-        ZipEntry zipEntry = new ZipEntry(fileToZip.getName());
-        zipOut.putNextEntry(zipEntry);
+            try (FileInputStream fis = new FileInputStream(fileToZip)) {
+                ZipEntry zipEntry = new ZipEntry(fileToZip.getName());
+                zipOut.putNextEntry(zipEntry);
 
-        byte[] bytes = new byte[1024];
-        int length;
-        while((length = fis.read(bytes)) >= 0) {
-            zipOut.write(bytes, 0, length);
+                byte[] bytes = new byte[1024];
+                int length;
+                while ((length = fis.read(bytes)) >= 0) {
+                    zipOut.write(bytes, 0, length);
+                }
+
+                zipOut.closeEntry();
+                zipOut.close();
+            }
         }
-
-        zipOut.close();
-        fis.close();
-        fos.close();
     }
 }
