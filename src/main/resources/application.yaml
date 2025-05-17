@@ -1,8 +1,18 @@
 spring:
   main.banner-mode: off
+  datasource:
+    name: TEST
 
 app:
   version: 1.0.7
   specialValue: 12345
   context:
     file: /spring-context.xml
+
+server:
+  port: 8091
+  servlet:
+    context-path: /app
+
+#access page: http://localhost:8091/app/swagger-ui.html
+springdoc.swagger-ui.path=swagger-ui: 'swagger-ui.html'
